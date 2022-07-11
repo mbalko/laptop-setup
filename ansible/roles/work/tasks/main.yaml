@@ -1,0 +1,22 @@
+- name: Install packages
+  apt:
+    name:
+      - freerdp2-x11
+      - openfortivpn
+
+- name: Copy FortiClient config
+  copy:
+    src: "{{ role_path }}/files/openfortivpn/config"
+    dest: /etc/openfortivpn/config
+
+- name: Append FortiClient alias to .bashrc
+  lineinfile:
+    path: "{{ home }}/.bashrc"
+    line: alias vpn="sudo openfortivpn"
+    create: yes
+
+- name: Append to FreeRDP alias to .bashrc
+  lineinfile:
+    path: "{{ home }}/.bashrc"
+    line: alias rdp="xfreerdp /v:rkm-dt-m720q-14.mediterra.cz /u:mbalko"
+    create: yes

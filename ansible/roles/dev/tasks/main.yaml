@@ -1,31 +1,26 @@
-
-- name: Add Atom repositories
-  command: "{{ item }}"
-  with_items:
-    - sh -c 'echo -e "[Atom]\nname=Atom Editor\nbaseurl=https://packagecloud.io/AtomEditor/atom/el/7/\$basearch\nenabled=1\ntype=rpm-md\ngpgcheck=0\nrepo_gpgcheck=1\ngpgkey=https://packagecloud.io/AtomEditor/atom/gpgkey" > /etc/zypp/repos.d/atom.repo'
-    - zypper --gpg-auto-import-keys refresh
-
-- name: Add Visual Studio Code repositories
-  command: "{{ item }}"
-  with_items:
-    - zypper rr vscode
-    - rpm --import https://packages.microsoft.com/keys/microsoft.asc
-    - zypper addrepo https://packages.microsoft.com/yumrepos/vscode vscode
-    - zypper refresh
-
 - name: Install packages
-  zypper:
+  apt:
     name:
       - terminator
       - git
-      - atom
-      - code
-      - openfortivpn
       - openvpn
-      - freerdp
       - keepassxc
       - thunderbird
+      - teamviewer
     state: latest
+
+- name: Install cloudflared
+  get_url:
+    url: https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64
+    dest: /usr/local/bin/cloudflared
+    mode: 777
+
+- name: Copy SSH config
+  copy:
+    src: "{{ role_path }}/files/.ssh"
+    dest: "{{ home }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
 
 - name: Set GIT email
   community.general.git_config:
