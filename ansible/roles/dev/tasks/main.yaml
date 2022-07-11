@@ -33,3 +33,5 @@
     name: user.name
     scope: global
     value: "Martin Balko"
+
+#- import_tasks: syncthing.yaml

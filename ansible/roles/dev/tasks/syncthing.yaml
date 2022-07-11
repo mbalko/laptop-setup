@@ -1,0 +1,15 @@
+- name: Install Syncthing
+  apt:
+    name: syncthing
+    state: latest
+
+- name: Create directories for Syncthing
+  file:
+    path: "{{ home }}/{{ item }}"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    with_items:
+    - Keepass
+    - Sync
+    - Sync-Mobile
