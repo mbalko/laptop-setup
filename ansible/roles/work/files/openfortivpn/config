@@ -1,7 +1,4 @@
 # ### config file for openfortivpn, see man openfortivpn(1) ###
-# 
 host = vpn.mediterra.cz
-# port = 443
 username = mbalko
-# password = VPNpassw0rd
 trusted-cert = 926ebcdb4bd337dd87e493f884447cf73be32cd29e75dea3edbda44c86fb6e16
