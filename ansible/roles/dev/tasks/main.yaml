@@ -7,6 +7,7 @@
       - keepassxc
       - thunderbird
       - teamviewer
+      - tmux
     state: latest
 
 - name: Install cloudflared
