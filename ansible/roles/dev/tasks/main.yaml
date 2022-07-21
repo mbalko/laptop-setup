@@ -8,6 +8,7 @@
       - thunderbird
       - teamviewer
       - tmux
+      - vlc
     state: latest
 
 - name: Install cloudflared
