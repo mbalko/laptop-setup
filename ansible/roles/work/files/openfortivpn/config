@@ -1,4 +1,4 @@
 # ### config file for openfortivpn, see man openfortivpn(1) ###
 host = vpn.mediterra.cz
 username = mbalko
-trusted-cert = 926ebcdb4bd337dd87e493f884447cf73be32cd29e75dea3edbda44c86fb6e16
+trusted-cert = d9129a779d9189d0f5f2b688c0e91b1416f9e2c25e17264960f2652644ee8b2d

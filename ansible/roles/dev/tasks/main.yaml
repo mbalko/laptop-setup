@@ -1,3 +1,8 @@
+- name: Update and upgrade packages
+  apt:
+    upgrade: yes
+    update_cache: yes
+
 - name: Install packages
   apt:
     name:
@@ -35,5 +40,3 @@
     name: user.name
     scope: global
     value: "Martin Balko"
-
-#- import_tasks: syncthing.yaml
